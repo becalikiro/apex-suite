@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as EcosystemRouteImport } from './routes/ecosystem'
+import { Route as CrmRouteImport } from './routes/crm'
+import { Route as ModuleRouteImport } from './routes/$module'
 import { Route as IndexRouteImport } from './routes/index'
 
+const EcosystemRoute = EcosystemRouteImport.update({
+  id: '/ecosystem',
+  path: '/ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmRoute = CrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModuleRoute = ModuleRouteImport.update({
+  id: '/$module',
+  path: '/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$module': typeof ModuleRoute
+  '/crm': typeof CrmRoute
+  '/ecosystem': typeof EcosystemRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$module': typeof ModuleRoute
+  '/crm': typeof CrmRoute
+  '/ecosystem': typeof EcosystemRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$module': typeof ModuleRoute
+  '/crm': typeof CrmRoute
+  '/ecosystem': typeof EcosystemRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/$module' | '/crm' | '/ecosystem'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/$module' | '/crm' | '/ecosystem'
+  id: '__root__' | '/' | '/$module' | '/crm' | '/ecosystem'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ModuleRoute: typeof ModuleRoute
+  CrmRoute: typeof CrmRoute
+  EcosystemRoute: typeof EcosystemRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ecosystem': {
+      id: '/ecosystem'
+      path: '/ecosystem'
+      fullPath: '/ecosystem'
+      preLoaderRoute: typeof EcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm': {
+      id: '/crm'
+      path: '/crm'
+      fullPath: '/crm'
+      preLoaderRoute: typeof CrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$module': {
+      id: '/$module'
+      path: '/$module'
+      fullPath: '/$module'
+      preLoaderRoute: typeof ModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +104,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ModuleRoute: ModuleRoute,
+  CrmRoute: CrmRoute,
+  EcosystemRoute: EcosystemRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
