@@ -3,12 +3,15 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Construction } from "lucide-react";
 
 const TITLES: Record<string, string> = {
-  erp: "ERP", finance: "Finance", hr: "Human Resources", industry: "Industry Verticals",
+  erp: "Gestão Empresarial (ERP)",
+  finance: "Financeiro",
+  hr: "Recursos Humanos",
+  industry: "Verticais de Indústria",
 };
 
 export const Route = createFileRoute("/$module")({
   head: ({ params }) => ({
-    meta: [{ title: `${TITLES[params.module] ?? "Module"} — Enterprise Suite` }],
+    meta: [{ title: `${TITLES[params.module] ?? "Módulo"} — Suite Empresarial` }],
   }),
   component: ModulePlaceholder,
 });
@@ -22,13 +25,13 @@ function ModulePlaceholder() {
         <Construction className="h-12 w-12 text-accent mx-auto mb-4" />
         <h1 className="text-3xl font-semibold">{title}</h1>
         <p className="text-fg-muted mt-3">
-          This module is part of the Enterprise Suite ecosystem and will be enabled once configured.
+          Este módulo faz parte do ecossistema da Suite Empresarial e será activado assim que estiver configurado.
         </p>
         <Link
           to="/ecosystem"
           className="inline-flex mt-6 items-center gap-2 bg-accent text-accent-fg px-5 py-2.5 rounded-lg text-sm font-semibold"
         >
-          Browse modules
+          Explorar módulos
         </Link>
       </div>
     </AppShell>

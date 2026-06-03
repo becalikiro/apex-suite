@@ -9,44 +9,44 @@ import { AppShell } from "@/components/layout/AppShell";
 export const Route = createFileRoute("/ecosystem")({
   head: () => ({
     meta: [
-      { title: "Modular Ecosystem — Enterprise Suite" },
-      { name: "description", content: "Activate or deactivate any module — CRM, ERP, Finance, HR, Industry verticals, and more." },
+      { title: "Ecossistema Modular — Suite Empresarial" },
+      { name: "description", content: "Active ou desactive qualquer módulo — CRM, ERP, Financeiro, RH, verticais de indústria e muito mais." },
     ],
   }),
   component: Ecosystem,
 });
 
-type Mod = { icon: typeof Network; title: string; desc: string; status: "Active" | "Available" | "Beta" };
+type Mod = { icon: typeof Network; title: string; desc: string; status: "Activo" | "Disponível" | "Beta" };
 
 const MODULES: Mod[] = [
-  { icon: Network, title: "Customer Relations", desc: "Unified pipeline with predictive lead scoring and global contact sync.", status: "Active" },
-  { icon: Boxes, title: "Enterprise Planning", desc: "Integrated resource scheduling and manufacturing execution at scale.", status: "Active" },
-  { icon: Wallet, title: "Financial Core", desc: "Automated ledger, tax compliance, multi-currency treasury management.", status: "Active" },
-  { icon: Users, title: "Human Capital", desc: "Talent acquisition, payroll automation, and workforce analytics.", status: "Active" },
-  { icon: GraduationCap, title: "Ed-Tech Link", desc: "Enrollment, grading, and virtual tutors for institutions of any size.", status: "Available" },
-  { icon: Stethoscope, title: "Clinical Suite", desc: "Patient records, scheduling, and AI clinical assistant.", status: "Available" },
-  { icon: Pill, title: "Pharma Track", desc: "Batches, expirations, and intelligent consumption forecasting.", status: "Available" },
-  { icon: Hotel, title: "Hospitality OS", desc: "Reservations, housekeeping, and occupancy forecasting.", status: "Beta" },
-  { icon: UtensilsCrossed, title: "Restaurant Flow", desc: "Tables, kitchen, delivery, and waste-control intelligence.", status: "Available" },
-  { icon: Scissors, title: "Salon & Barbershop", desc: "Bookings, commissions, and WhatsApp confirmations.", status: "Available" },
-  { icon: Wrench, title: "Auto Workshop", desc: "Work orders, AI-assisted diagnostics, and maintenance history.", status: "Available" },
-  { icon: Snowflake, title: "Refrigeration Tech", desc: "Installations, equipment, contracts, and service rounds.", status: "Available" },
-  { icon: HardHat, title: "Welding & Trades", desc: "Sites, teams, materials, and live budget tracking.", status: "Available" },
-  { icon: PaintBucket, title: "Painting Crews", desc: "Schedules, customers, materials, and cost control.", status: "Available" },
-  { icon: Building, title: "Construction", desc: "Projects, engineers, contracts, and material logistics.", status: "Beta" },
-  { icon: Truck, title: "Logistics & Fleet", desc: "Routes, fuel, deliveries, and AI route optimization.", status: "Active" },
-  { icon: MessageSquare, title: "WhatsApp Business AI", desc: "Chatbot, campaigns, billing, audio-to-text, and human handoff.", status: "Active" },
-  { icon: BarChart3, title: "Business Intelligence", desc: "KPIs, executive dashboards, and predictive comparisons.", status: "Active" },
+  { icon: Network, title: "Relação com Clientes", desc: "Pipeline unificado com pontuação preditiva de leads e sincronização global de contactos.", status: "Activo" },
+  { icon: Boxes, title: "Planeamento Empresarial", desc: "Agendamento integrado de recursos e execução de manufactura à escala.", status: "Activo" },
+  { icon: Wallet, title: "Núcleo Financeiro", desc: "Razão automatizado, conformidade fiscal e tesouraria multi-moeda.", status: "Activo" },
+  { icon: Users, title: "Capital Humano", desc: "Recrutamento, automação salarial e análise da força de trabalho.", status: "Activo" },
+  { icon: GraduationCap, title: "Educação", desc: "Matrículas, avaliações e tutores virtuais para instituições de qualquer dimensão.", status: "Disponível" },
+  { icon: Stethoscope, title: "Saúde Clínica", desc: "Processos clínicos, marcações e assistente clínico de IA.", status: "Disponível" },
+  { icon: Pill, title: "Farmácia", desc: "Lotes, validades e previsão inteligente de consumo.", status: "Disponível" },
+  { icon: Hotel, title: "Hotelaria", desc: "Reservas, governanta e previsão de ocupação.", status: "Beta" },
+  { icon: UtensilsCrossed, title: "Restauração", desc: "Mesas, cozinha, entregas e controlo de desperdício inteligente.", status: "Disponível" },
+  { icon: Scissors, title: "Salão e Barbearia", desc: "Marcações, comissões e confirmações por WhatsApp.", status: "Disponível" },
+  { icon: Wrench, title: "Oficina Auto", desc: "Ordens de serviço, diagnóstico assistido por IA e histórico de manutenção.", status: "Disponível" },
+  { icon: Snowflake, title: "Refrigeração", desc: "Instalações, equipamentos, contratos e rondas de assistência.", status: "Disponível" },
+  { icon: HardHat, title: "Soldadura e Ofícios", desc: "Obras, equipas, materiais e controlo de orçamento em tempo real.", status: "Disponível" },
+  { icon: PaintBucket, title: "Equipas de Pintura", desc: "Agendas, clientes, materiais e controlo de custos.", status: "Disponível" },
+  { icon: Building, title: "Construção Civil", desc: "Projectos, engenheiros, contratos e logística de materiais.", status: "Beta" },
+  { icon: Truck, title: "Logística e Frota", desc: "Rotas, combustível, entregas e optimização de rotas com IA.", status: "Activo" },
+  { icon: MessageSquare, title: "WhatsApp Business IA", desc: "Chatbot, campanhas, facturação, áudio para texto e transferência para agente.", status: "Activo" },
+  { icon: BarChart3, title: "Business Intelligence", desc: "KPIs, painéis executivos e comparações preditivas.", status: "Activo" },
 ];
 
 const STATUS_STYLES: Record<Mod["status"], string> = {
-  Active: "bg-success/10 text-success border-success/30",
-  Available: "bg-surface-3/30 text-fg-muted border-border",
-  Beta: "bg-accent/10 text-accent border-accent/30",
+  "Activo": "bg-success/10 text-success border-success/30",
+  "Disponível": "bg-surface-3/30 text-fg-muted border-border",
+  "Beta": "bg-accent/10 text-accent border-accent/30",
 };
 
 function ModuleCard({ m }: { m: Mod }) {
-  const active = m.status === "Active";
+  const active = m.status === "Activo";
   return (
     <div className={`glass glass-hover rounded-xl p-6 flex flex-col relative ${active ? "" : "opacity-90"}`}>
       <div className="absolute top-4 right-4">
@@ -61,7 +61,7 @@ function ModuleCard({ m }: { m: Mod }) {
         <span className={`px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider border ${STATUS_STYLES[m.status]}`}>
           {m.status}
         </span>
-        <button className="text-accent-strong hover:text-accent transition">
+        <button className="text-accent-strong hover:text-accent transition" aria-label="Abrir módulo">
           <ArrowRight className="h-5 w-5" />
         </button>
       </div>
@@ -74,18 +74,18 @@ function Ecosystem() {
     <AppShell>
       <div className="flex items-end justify-between">
         <div>
-          <span className="label-eyebrow text-accent">Module Management</span>
-          <h1 className="text-3xl font-semibold mt-2">Modular Ecosystem</h1>
+          <span className="label-eyebrow text-accent">Gestão de Módulos</span>
+          <h1 className="text-3xl font-semibold mt-2">Ecossistema Modular</h1>
           <p className="text-fg-muted mt-1">
-            Every module is independent yet fully integrated. Activate what you need.
+            Cada módulo é independente, mas totalmente integrado. Active aquilo de que precisa.
           </p>
         </div>
         <div className="flex gap-2">
           <button className="flex items-center gap-2 px-4 py-2 border border-border text-fg-muted rounded-lg hover:bg-surface-2/60 transition text-sm">
-            <Filter className="h-4 w-4" /> Filter
+            <Filter className="h-4 w-4" /> Filtrar
           </button>
           <button className="flex items-center gap-2 px-4 py-2 bg-surface/80 border border-border rounded-lg hover:bg-surface-2/60 transition text-sm">
-            <Settings className="h-4 w-4" /> Configure Architecture
+            <Settings className="h-4 w-4" /> Configurar Arquitectura
           </button>
         </div>
       </div>
